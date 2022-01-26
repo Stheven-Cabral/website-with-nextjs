@@ -3,6 +3,7 @@ import Head from "next/head";
 import React from "react";
 import * as prismic from "@prismicio/client";
 import { RichText, RichTextBlock } from "prismic-reactjs";
+import Button from "../components/Button";
 
 /**
  * Home: The Landing page of the web app
@@ -13,11 +14,14 @@ interface homeProps {
   page: {
     data: {
       title: RichTextBlock[];
+      navigate_to_page: Object[];
     };
   };
 }
 
 function Home({ page }: homeProps) {
+  const { title, navigate_to_page: navigateToPage } = page.data;
+
   return (
     <div>
       <Head>
@@ -25,7 +29,12 @@ function Home({ page }: homeProps) {
       </Head>
 
       <main>
-        <h1>{RichText.asText(page.data.title)}</h1>
+        <h1 className="welcome-page__title">{RichText.asText(title)}</h1>
+        <div className="welcome-page__buttons-wrapper">
+          {navigateToPage.map((nav, index) => {
+            return <Button text={nav} key={index} />;
+          })}
+        </div>
       </main>
     </div>
   );
