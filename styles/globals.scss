@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+
+/*** Color Variable Imports ***/
+@import "./partials/colors";
+
+/*** Page Style Imports ***/
+@import "./pages/index";

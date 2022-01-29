@@ -1,5 +1,4 @@
 import Head from "next/head";
-// import styles from "../styles/Home.module.css";
 import React from "react";
 import * as prismic from "@prismicio/client";
 import { RichText, RichTextBlock } from "prismic-reactjs";
@@ -28,7 +27,7 @@ function Home({ page }: homeProps) {
         <title>Stheven Cabral Welcome Page</title>
       </Head>
 
-      <main>
+      <main className="welcome-page">
         <h1 className="welcome-page__title">{RichText.asText(title)}</h1>
         <div className="welcome-page__buttons-wrapper">
           {navigateToPage.map((nav, index) => {
