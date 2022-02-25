@@ -1,8 +1,10 @@
 import Head from "next/head";
 import React from "react";
-import * as prismic from "@prismicio/client";
+// import * as prismic from "@prismicio/client";
 import { RichText, RichTextBlock } from "prismic-reactjs";
 import Button from "../components/Button";
+
+const Prismic = require("@prismicio/client");
 
 /**
  * Home: The Landing page of the web app
@@ -41,10 +43,10 @@ function Home({ page }: homeProps) {
 
 export async function getStaticProps() {
   // API endpoint for the Prismic CMS repository.
-  const endpoint = prismic.getEndpoint("stheven-cabral-website");
+  const endpoint = Prismic.getEndpoint("stheven-cabral-website");
 
   // Client used to fetch CMS content.
-  const client = prismic.createClient(endpoint);
+  const client = Prismic.createClient(endpoint);
 
   // Page document for our homepage from the CMS.
   const page = await client.getByUID("portfolio", "welcome");
